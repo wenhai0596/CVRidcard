@@ -70,23 +70,23 @@ func Initialize() uintptr{
 
 }
 
-type idcardMap struct {
-    name string
-    sex  string
-    nation string
-    birthday string
-    peopleAddress string
-    iDCode string
-    department string
-    startEndDate string
-    jpgData string
+type IdcardMap struct {
+    Name string
+    Sex  string
+    Nation string
+    Birthday string
+    PeopleAddress string
+    IDCode string
+    Department string
+    StartEndDate string
+    JpgData string
 }
 
 
 
-func GetIdCdrdInfo(jpg bool)(idcardMap, error){
+func GetIdCdrdInfo(jpg bool)(IdcardMap, error){
    
-    s := idcardMap{}
+    s := IdcardMap{}
     sourcestring := ""
     jpgData := ""
 
@@ -119,25 +119,25 @@ func GetIdCdrdInfo(jpg bool)(idcardMap, error){
                }
 
 
-                s = idcardMap{e[1],e[2],e[3],e[4],e[5],e[6],e[7],e[8],sourcestring}
+                s = IdcardMap{e[1],e[2],e[3],e[4],e[5],e[6],e[7],e[8],sourcestring}
                 return s, nil
             }
         //linux
         
-            s.name, _ = GetPeopleName()
-            s.sex, _  =GetPeopleSex()
-            s.nation, _ =GetPeopleNation()
-            s.birthday, _ =GetPeopleBirthday()
-            s.peopleAddress, _ = GetPeopleAddress()
-            s.iDCode, _   =GetPeopleIDCode()
-            s.department, _  =GetDepartment()
+            s.Name, _ = GetPeopleName()
+            s.Sex, _  =GetPeopleSex()
+            s.Nation, _ =GetPeopleNation()
+            s.Birthday, _ =GetPeopleBirthday()
+            s.PeopleAddress, _ = GetPeopleAddress()
+            s.IDCode, _   =GetPeopleIDCode()
+            s.Department, _  =GetDepartment()
             sd, _ := GetStartDate()
             ed, _ := GetEndDate()
-            s.startEndDate = sd+"-"+ed
+            s.StartEndDate = sd+"-"+ed
             if jpg {
                jpgData,_ = Getbase64JpgData()
             }
-            s.jpgData = jpgData
+            s.JpgData = jpgData
 
         
         CVR_CloseComm .Call()
