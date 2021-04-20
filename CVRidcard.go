@@ -7,7 +7,6 @@ import (
     "io/ioutil"
     "os"
     "os/user"
-    "fmt"
     "syscall"
     "runtime"
     "bufio"
